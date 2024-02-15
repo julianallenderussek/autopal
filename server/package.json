@@ -1,0 +1,28 @@
+{
+  "name": "autopal",
+  "version": "1.0.0",
+  "description": "Autpal Auto Marketplace",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js", 
+    "test": "test"
+  },
+  "keywords": [
+    "auto",
+    "ecommerce",
+    "node.js"
+  ],
+  "author": "flacocodes",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "supertest": "^6.3.4"
+  }
+}
