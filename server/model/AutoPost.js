@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const AutoPostSchema = new mongoose.Schema({
+const AutoListingSchema = new mongoose.Schema({
   make: String,
 	model: Number,
 	year: Number,
@@ -16,4 +16,4 @@ const AutoPostSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model("AutoPost", AutoPostSchema)
+module.exports = mongoose.model("AutoListing", AutoListingSchema)
