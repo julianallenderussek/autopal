@@ -1,6 +1,8 @@
 const request = require('supertest');
 const app = require('./../index'); // Your Express application
 
+console.log("TEST process", process.env.env)
+
 describe('GET /', () => {
   it('responds with "Hello, World!"', async () => {
     const response = await request(app).get('/');
