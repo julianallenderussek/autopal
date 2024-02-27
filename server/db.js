@@ -1,12 +1,14 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
+const path = require('path');
 
+require('dotenv').config({path: path.join(__dirname, '.env') });
 // Get MongoDB URI from environment variable
-const mongoURI = process.env.DB_URI;
+const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI)
 
+mongoose.connection.on('connected', err => {
+  console.log("Connected to MongoDB")
+});
 
-// Define mongoose schema and models here
-
-// Start your server or do other setup here
+module.exports = mongoose

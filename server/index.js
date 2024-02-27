@@ -4,7 +4,6 @@ require('dotenv').config();
 const userRoutes = require("./routes/usersRoutes");
 const autoListingsRoutes = require("./routes/autoListingsRoutes");
 
-
 const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT;

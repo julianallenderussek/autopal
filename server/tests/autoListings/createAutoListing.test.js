@@ -31,10 +31,17 @@ describe('POST /auto_listing', () => {
     await mongoose.connection.close();
   })
 
-  it('Testing Middleware', async () => {
+  it('Creating Auto Listing with Correct Body', async () => {
     const data = {
-      email: "pete@gmail.com",
-      password: "12345678"
+      make: "Ford",
+      model: "Mustang",
+      year: 2024,
+      city: "Victoria",
+      state: "British Columbia",
+      country:  "Canada",
+      price: 35450,
+      milage: 76543,
+      
     };
 
     const response = await request(app)
@@ -44,9 +51,35 @@ describe('POST /auto_listing', () => {
       .set('authorization', token);
 
     expect(response.statusCode).toBe(201);
-    expect(response.body).toHaveProperty('token');
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body).toHaveProperty('message');
+    expect(response.body.message).toBe("Auto Listing created");
     // expect(response.body.token).toBeFalsy();
-    expect(response.body.token).toBeTruthy();
+    // Add more assertions as needed
+  });
+
+  it('Error Missing Price', async () => {
+    const data = {
+      make: "Ford",
+      model: "Mustang",
+      year: 2024,
+      city: "Victoria",
+      state: "British Columbia",
+      country:  "Canada",
+      // price: 35450,
+      milage: 76543,
+      
+    };
+
+    const response = await request(app)
+      .post('/auto_listings')
+      .send(data)
+      .set('Accept', 'application/json')
+      .set('authorization', token);
+
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toHaveProperty('error');
+    // expect(response.body.token).toBeFalsy();
     // Add more assertions as needed
   });
 
