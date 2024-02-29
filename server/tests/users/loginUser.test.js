@@ -3,7 +3,7 @@ const app = require('../../index'); // Your Express application
 const supertest = require('supertest');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require("mongoose");
-const { createSignedInUser } = require('../utils');
+const { createAndLoginUser, createSignedInUser } = require('../utils/users');
 
 describe('POST /users', () => {
   

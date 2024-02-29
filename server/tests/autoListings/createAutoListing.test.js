@@ -3,7 +3,7 @@ const app = require('../../index'); // Your Express application
 const supertest = require('supertest');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require("mongoose");
-const { createAndLoginUser } = require('../utils');
+const { createAndLoginUser } = require('../utils/users');
 
 describe('POST /auto_listing', () => {
   
@@ -21,7 +21,6 @@ describe('POST /auto_listing', () => {
       role: "seller",
       password: "12345678"
     });
-    console.log("THE RESULT", result)
     token = result.token
   })
 

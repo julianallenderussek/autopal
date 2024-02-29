@@ -1,15 +1,15 @@
 
 const bcrypt = require('bcrypt');
-const AutoListing = require('../model/AutoListing');
+const Appointment = require('../model/Appointment');
 require('dotenv').config();
 
-const createAutoListing = async (req, res) => {
+const createAppointment = async (req, res) => {
   try {
   
-    const autoListing = new AutoListing({...req.body, owner: req.user._id});
-    await autoListing.save();
-  
-    return res.status(201).json({message:"Auto Listing created", _id: autoListing._id});
+    const appointment = new Appointment({...req.body, buyer: req.user._id});
+    await appointment.save();
+
+    return res.status(201).json({message:"Appointment created", _id: appointment._id});
   } catch (err) {
     console.log(err.message)
     
@@ -17,19 +17,29 @@ const createAutoListing = async (req, res) => {
   }
 };
 
-const getAutoListing = async (req, res) => {
+const getAppointment = async (req, res) => {
   try {
  
     if (!req.params._id) {
       return res.status(400).json({message:"Please provide a listing id"});    
     }
 
-    const autoListing = await AutoListing.findById(req.params._id).populate({
-      path: 'owner',
-      select: 'first_name first_name email _id' // Specify the fields you want to populate
-  }).exec();
+    const appointment = await Appointment.findById(req.params._id)
+    .populate({
+      path: 'buyer',
+      select: '_id first_name last_name phone email' // Specify the fields you want to populate
+    })
+    .populate({
+      path: 'seller',
+      select: '_id first_name last_name phone email'
+    })
+    .populate({
+      path: 'listing',
+      // select: '_id first_name last_name phone email'
+    })
+    .exec();
     
-    return res.status(201).json({autoListing});
+    return res.status(201).json({appointment});
   } catch (err) {
     console.log(err.message)
     
@@ -37,7 +47,7 @@ const getAutoListing = async (req, res) => {
   }
 };
 
-const updateAutoListing = async (req, res) => {
+const updateAppointment = async (req, res) => {
   try {
      
     if (!req.params._id) {
@@ -55,7 +65,7 @@ const updateAutoListing = async (req, res) => {
 };
 
 
-const deleteAutoListing = async (req, res) => {
+const deleteAppointment = async (req, res) => {
   try {
      
     if (!req.params._id) {
@@ -73,8 +83,8 @@ const deleteAutoListing = async (req, res) => {
 };
 
 module.exports = {
-  createAutoListing,
-  getAutoListing,
-  updateAutoListing,
-  deleteAutoListing
+  createAppointment,
+  getAppointment,
+  updateAppointment,
+  deleteAppointment
 }

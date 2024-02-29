@@ -3,7 +3,7 @@ const app = require('../../index'); // Your Express application
 const supertest = require('supertest');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require("mongoose");
-const { createSignedInUser } = require('../utils');
+const { createSignedInUser } = require('../utils/users');
 
 describe('POST /users', () => {
   
@@ -41,8 +41,6 @@ describe('POST /users', () => {
       .send(data)
       .set('Accept', 'application/json');
 
-    
-    console.log(response.body)
     expect(response.statusCode).toBe(201);
     expect(response.body).toHaveProperty('token');
     expect(response.body.token).toBeTruthy();

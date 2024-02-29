@@ -16,6 +16,7 @@ exports.authenticateToken = (req, res, next) => {
       return res.status(403).json({ message: 'Token is not valid' });
     }
   
+    console.log("DECODED", decoded)
     // Attach the decoded user information to the request object for further processing
     req.user = decoded;
     next(); // Pass control to the next middleware

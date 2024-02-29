@@ -53,12 +53,16 @@ const loginUser = async (req, res) => {
     }
 
     const tokenData = { 
-      id: user._id,
+      _id: user._id,
       email:user.email,
       role: user.role
     }      
 
+    console.log(tokenData)
+
     const token = await jwt.sign(tokenData ,JWT_SECRET, { expiresIn: '2h'});  
+
+
 
     return res.status(201).json({token: token});
   } catch (err) {

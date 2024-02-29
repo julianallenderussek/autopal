@@ -3,7 +3,7 @@ const app = require('../../index'); // Your Express application
 const supertest = require('supertest');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require("mongoose");
-const { createAndLoginUser } = require('../utils');
+const { createAndLoginUser } = require('../utils/users');
 
 describe('GET /auto_listing/:_id', () => {
   
@@ -58,6 +58,7 @@ describe('GET /auto_listing/:_id', () => {
       .set('authorization', token);
     
     expect(response.body).toHaveProperty('autoListing');
+    expect(response.body.autoListing.owner).toHaveProperty('_id');
     expect(response.body.autoListing).toHaveProperty('_id');
 
   });

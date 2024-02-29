@@ -26,3 +26,4 @@ exports.createAndLoginUser = async (app, userData) => {
     
     return loginResponse.body
 };
+

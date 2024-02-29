@@ -4,12 +4,12 @@ const supertest = require('supertest');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require("mongoose");
 const { createAndLoginUser } = require('../utils/users');
+const { createAutoListing } = require('../utils/listings');
 
-describe('PUT /auto_listing/:_id', () => {
+describe('POST /auto_listing', () => {
   
   let token;
-  let autoListingId;
-
+  
   beforeAll(async () => {
     const mongoServer = await MongoMemoryServer.create();
     await mongoose.connect(mongoServer.getUri());
@@ -19,44 +19,41 @@ describe('PUT /auto_listing/:_id', () => {
       last_name: 'Smith',
       email: "pete@gmail.com",
       phone: "81568150",
-      role: "seller",
+      role: "buyer",
       password: "12345678"
     });
     token = result.token
-
-    const data = {
-      make: "Ford",
-      model: "Mustang",
-      year: 2024,
-      city: "Victoria",
-      state: "British Columbia",
-      country:  "Canada",
-      price: 35450,
-      milage: 76543,
-    };
-
-    const response = await request(app)
-      .post('/auto_listings')
-      .send(data)
-      .set('Accept', 'application/json')
-      .set('authorization', token);
-
-    autoListingId = response.body._id
-
   })
 
+  
   afterAll(async () => {
     await mongoose.disconnect();
     await mongoose.connection.close();
   })
 
-  it('Delete auto listing by id - correct id', async () => {
+  it('Creating Appointment with Correct Body', async () => {
+    const { autoListing } = await createAutoListing(app)
+    
+    const now = new Date();
+    const nowPlusOneHour = new Date();
+    nowPlusOneHour.setTime(now.getTime() + (1 * 60 * 60 * 1000)); 
+
+    const data = {
+      seller: autoListing.owner._id,
+      listing: autoListing._id,
+      fromDateTime: now,
+      toDateTime: nowPlusOneHour
+    }
+
     const response = await request(app)
-      .delete(`/auto_listings/${autoListingId}`)
+      .post('/appointments')
+      .send(data)
       .set('Accept', 'application/json')
       .set('authorization', token);
 
-    expect(response.body).toHaveProperty('message');
+    expect(response.statusCode).toBe(201);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.message).toBe('Appointment created');
   });
 
 });

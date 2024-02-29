@@ -3,7 +3,7 @@ const app = require('../../index'); // Your Express application
 const supertest = require('supertest');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require("mongoose");
-const { createAndLoginUser } = require('../utils');
+const { createAndLoginUser } = require('../utils/users');
 
 describe('PUT /auto_listing/:_id', () => {
   
@@ -42,7 +42,7 @@ describe('PUT /auto_listing/:_id', () => {
       .set('authorization', token);
 
     autoListingId = response.body._id
-
+    
   })
 
   

@@ -21,6 +21,11 @@ const AutoListingSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	status: {
+		type: String,
+		default: 'draft',
+		required: true
+	},
 	country: {
 		type: String,
 		required: true
@@ -34,10 +39,15 @@ const AutoListingSchema = new mongoose.Schema({
 		required: true
 	},
 	main_image: String,
-	user: {
+	owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+		required: true
   }
-})
+},
+	{
+		timestamps: true
+	}
+)
 
 module.exports = mongoose.model("AutoListing", AutoListingSchema)
