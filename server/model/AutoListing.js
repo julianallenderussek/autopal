@@ -23,6 +23,7 @@ const AutoListingSchema = new mongoose.Schema({
 	},
 	status: {
 		type: String,
+		enum: ["draft", "published", "closed"],
 		default: 'draft',
 		required: true
 	},

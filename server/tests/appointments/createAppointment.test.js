@@ -32,14 +32,16 @@ describe('POST /auto_listing', () => {
   })
 
   it('Creating Appointment with Correct Body', async () => {
-    const { autoListing } = await createAutoListing(app)
+    const { listing, seller  } = await createAutoListing(app)
     
+    const {autoListing } = listing
+
     const now = new Date();
     const nowPlusOneHour = new Date();
     nowPlusOneHour.setTime(now.getTime() + (1 * 60 * 60 * 1000)); 
 
     const data = {
-      seller: autoListing.owner._id,
+      seller: seller.sellerData._id,
       listing: autoListing._id,
       fromDateTime: now,
       toDateTime: nowPlusOneHour

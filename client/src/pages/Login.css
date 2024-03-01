@@ -1,0 +1,22 @@
+.main_container {
+  background-color: #0014cc16;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.login_form_container {
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 450px;
+  background-color: yellow;
+}
+
+.login_car_image {
+  width: 40vw;
+  min-width: 500px;
+  height: 96vh;
+}
+

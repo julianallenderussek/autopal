@@ -3,15 +3,19 @@ const request = require("supertest");
 const { createAndLoginUser } = require("./users");
 
 exports.createAutoListing = async (app) => {
-  const result = await createAndLoginUser(app, {
-      first_name: 'James',
-      last_name: 'Smith',
-      email: "pete@gmail.com",
-      phone: "81568150",
-      role: "seller",
-      password: "12345678"
-  });
+  const sellerData = {
+    first_name: 'James',
+    last_name: 'Smith',
+    email: "pete@gmail.com",
+    phone: "81568150",
+    role: "seller",
+    password: "12345678"
+}
+
+  const result = await createAndLoginUser(app, sellerData);
   token = result.token
+
+  sellerData['_id'] = result._id
   
   const data = {
     make: "Ford",
@@ -38,6 +42,6 @@ exports.createAutoListing = async (app) => {
     .set('authorization', token);
 
   const listing = response.body
-  return listing
+  return {listing, seller: { sellerData, token}}
 };
 

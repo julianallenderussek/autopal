@@ -1,0 +1,26 @@
+.header {
+  background-color: #0013ccb8;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.links_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 500px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+} 
+
+.link:hover {
+  font-weight: 900;
+  color: white;
+} 

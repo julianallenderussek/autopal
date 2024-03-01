@@ -6,9 +6,11 @@ const autoListingsRoutes = require("./routes/autoListingsRoutes");
 const appointmentsRoutes = require("./routes/appointmentsRoutes");
 const filesRoutes = require("./routes/filesRoutes");
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const PORT = process.env.PORT;
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
   return res.status(200).json("Hello World")

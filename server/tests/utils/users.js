@@ -11,7 +11,7 @@ exports.createSignedInUser = async (app, userData) => {
 };
 
 exports.createAndLoginUser = async (app, userData) => {
-    const createUserResponse = await request(app)
+    await request(app)
         .post("/users")
         .send(userData)
         .set("Accept", "application/json");

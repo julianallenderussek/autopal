@@ -6,10 +6,10 @@ const mongoose = require("mongoose");
 const { createAndLoginUser } = require('../utils/users');
 const { createAppointment } = require('../utils/appointments');
 
-describe('GET /appointments/:_id', () => {
+describe('PUT /appointments/:_id', () => {
   let token;
   let appointmentId;
-  let appointment;
+  let appointment 
 
   beforeAll(async () => {
     const mongoServer = await MongoMemoryServer.create();
@@ -24,15 +24,19 @@ describe('GET /appointments/:_id', () => {
     await mongoose.connection.close();
   })
 
-  it('Querying appointment by id - correct id', async () => {
+  const data = ({'status': 'confirmed'})
+
+  it('Confirming appointment by id - correct id', async () => {
     const response = await request(app)
-      .get(`/appointments/${appointment.appointment._id}`)
+      .put(`/appointments/${appointment.appointment._id}`)
+      .send(data)
       .set('Accept', 'application/json')
-      .set('authorization', appointment.buyer.token);
+      .set('authorization', appointment.seller.token);
     
-    expect(response.body.appointment).toHaveProperty('_id');
-    expect(response.body.appointment).toHaveProperty('seller');
-    expect(response.body.appointment).toHaveProperty('buyer');
+    expect(response.status).toBe(201);
+    expect(response.body).toHaveProperty('message');
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body).toHaveProperty('status');
   });
 
 });
