@@ -7,13 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   
-  const { token, setToken } = useContext(AppContext)
+  const { token, setToken, role, setRole } = useContext(AppContext)
   
   const navigate = useNavigate()
 
   const disconnect = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('role')
     setToken(null)
-    window.location('/')
+    setRole(null)
+    navigate('/')
   }
 
   return (
@@ -25,7 +28,9 @@ const Header = () => {
         <Link to="/" className="link">Home</Link>
         <Link to="/auto_listings" className="link">Listings</Link>
         <Link to="/about" className="link">About</Link>
-        <Link to="/create_listing" className="link">Create Listing</Link>
+        {
+          role === "seller" ? (<Link to="/create_listing" className="link">Create Listing</Link>) : <></>
+        }
         {
           token ? 
             <button onClick={disconnect}>Signout</button> :

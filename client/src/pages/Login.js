@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
   
 const Login = () => {
 
-  const { setToken } = useContext(AppContext)
+  const { setToken, setRole } = useContext(AppContext)
   
   const [isDisabled, setIsDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -44,10 +44,12 @@ const Login = () => {
     console.log(`${process.env.REACT_APP_API_URL}`)
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, formData)
-      console.log(response)
       if (response.status === 200) {
         console.log("Congratulations", response.data)
         setToken(response.data.token)
+        setRole(response.data.role)
+        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('role', response.data.role)
         navigate("/auto_listings")
       }
     } catch(error) {

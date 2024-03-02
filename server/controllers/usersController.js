@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
     }
 
     const token = await jwt.sign(tokenData,JWT_SECRET, { expiresIn: '2h'});  
-
+    
     return res.status(201).json({message:"Login successfully", token: token, role: user.role});
   } catch (err) {
     return res.status(400).json({ error: err.message });
@@ -60,7 +60,7 @@ const loginUser = async (req, res) => {
 
     const token = await jwt.sign(tokenData ,JWT_SECRET, { expiresIn: '2h'});  
 
-    return res.status(200).json({token: token, _id: user._id});
+    return res.status(200).json({token: token, _id: user._id, role: user.role});
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }

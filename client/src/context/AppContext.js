@@ -5,11 +5,10 @@ export const AppContext = createContext();
 const AppContextProvider = ({children}) => {
   const [first, setFirst] = useState("Checking context");
   const [token, setToken] = useState(() => {
-    const token = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     if (!token) {
       return null
     } else {
-      const parsedToken = JSON.parse(user)
       return token
     }
   });
@@ -25,11 +24,22 @@ const AppContextProvider = ({children}) => {
     }
   });
 
+  const [role, setRole] = useState(() => {
+    const role = localStorage.getItem('role');
+    if (!role) {
+      return null
+    } else {
+      return role
+    }
+  });
+
   return (
     <AppContext.Provider value={{
       first,
       user,
       setUser,
+      role, 
+      setRole,
       token,
       setToken
     }}>

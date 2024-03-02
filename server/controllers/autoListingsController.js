@@ -5,7 +5,6 @@ require('dotenv').config();
 
 const createAutoListing = async (req, res) => {
   try {
-  
     const autoListing = new AutoListing({...req.body, owner: req.user._id});
     await autoListing.save();
   
@@ -18,10 +17,10 @@ const createAutoListing = async (req, res) => {
 };
 
 const getAutoListings = async (req, res) => {
-  
+  console.log(req.query)
   try {
     const autoListings = await AutoListing.find({
-      status: req.body.status ? req.body.status : "draft" 
+      status: req.query.status ? req.query.status : "published" 
     }).populate({
       path: 'owner',
       select: 'first_name first_name email _id' // Specify the fields you want to populate

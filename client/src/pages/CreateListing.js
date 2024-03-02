@@ -11,7 +11,7 @@ const CreateListing = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const { token, setToken, user, setUser } = useContext(AppContext) 
+  const { token, role, setToken, user, setUser } = useContext(AppContext) 
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -25,10 +25,19 @@ const CreateListing = () => {
     status: "draft"
   });
 
+  console.log(token, role)
+
   const handleInput = (e) => {
     console.log(e.target.name)
     const newFormData = {...formData}
-    newFormData[`${e.target.name}`] = e.target.value
+    
+    let value = e.target.value
+
+    if (e.target.type === "number") {
+      value = parseInt(value)
+    }
+
+    newFormData[`${e.target.name}`] = value
   
     setFormData(newFormData)
     console.log(newFormData)
@@ -52,20 +61,26 @@ const CreateListing = () => {
     console.log(formData)
     
     console.log(formData)
-    // try {
-    //   const response = await axios.post(`${process.env.REACT_APP_API_URL}/users`, formData)
-    //   console.log(response)
-    //   if (response.status === 201) {
-    //     setToken(response.data.token)
-    //     navigate("/")
-    //   }
-    // } catch(error) {
-    //   if (error.response.status === 400) {
-    //     console.log(error.response.data.error)
-    //     setErrorMessage(error.response.data.error)
-    //     return
-    //   }
-    // }
+    console.log(token)
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auto_listings`, formData, {
+        "headers": {
+          "authorization": token
+        }
+      })
+      console.log(response)
+      if (response.status === 201) {
+        setToken(response.data.token)
+        navigate("/")
+      }
+    } catch(error) {
+      console.log(error)
+      if (error.response.status === 400) {
+        console.log(error.response.data.error)
+        setErrorMessage(error.response.data.error)
+        return
+      }
+    }
     
   }
 
@@ -109,7 +124,7 @@ const CreateListing = () => {
             />
             
             <label>Status</label>
-            <select name="milage" onChange={handleInput}>
+            <select name="status" onChange={handleInput}>
               <option value="draft">Draft</option>
               <option value="published">Published</option>
               <option value="closed">Closed</option>
