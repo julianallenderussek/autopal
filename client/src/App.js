@@ -9,6 +9,7 @@ import AutoListings from './pages/AutoListings';
 import CreateListing from './pages/CreateListing';
 import AutoListing from './pages/AutoListing';
 import AppointmentScheduler from './pages/AppointmentScheduler';
+import SellerAppointments from './pages/SellerAppointments';
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
         <Route path='auto_listings' index element={<AutoListings/>}/>
         <Route path='appointment_scheduler/:listing_id' index element={<AppointmentScheduler/>}/>
         <Route path='auto_listing/:id' index element={<AutoListing/>}/>
+        <Route path='sellers_appointments' index element={<SellerAppointments/>}/>
       </Route>
     )
   )

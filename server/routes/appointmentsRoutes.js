@@ -3,14 +3,16 @@ const express = require('express');
 const router = express.Router();
 const { 
   createAppointment, updateAppointment, 
-  getAppointment
+  getAppointment, getUserAppointments
+
 } = require('../controllers/appointmentController');
 const { authenticateToken } = require("../middleware/auth")
 
 // Define routes
-router.post('/', authenticateToken, createAppointment);
-router.get('/:_id', authenticateToken, getAppointment);
+router.get('/user', authenticateToken, getUserAppointments);
 router.put('/:_id', authenticateToken, updateAppointment);
+router.get('/id/:_id', authenticateToken, getAppointment);
+router.post('/', authenticateToken, createAppointment);
 
 // router.put('/:_id', authenticateToken, updateAppcreateAppointment);
 // router.delete('/:_id', authenticateToken, deleteAppcreateAppointment);

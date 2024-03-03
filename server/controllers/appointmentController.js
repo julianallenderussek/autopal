@@ -6,6 +6,8 @@ require('dotenv').config();
 const createAppointment = async (req, res) => {
   try {
 
+    console.log("Create appointment", req.user , req.body)
+
     const appointment = new Appointment({...req.body, buyer: req.user._id});
     await appointment.save();
 
@@ -16,6 +18,8 @@ const createAppointment = async (req, res) => {
     return res.status(400).json({ error: err.message });
   }
 };
+
+
 
 const getAppointment = async (req, res) => {
   try {
@@ -72,8 +76,51 @@ const updateAppointment = async (req, res) => {
   }
 };
 
+const getUserAppointments = async(req, res) => {
+
+  console.log(req.user)
+
+  let appointments = []
+  if (req.user.role === "buyer") {
+    appointments = await Appointment.find({buyer: req.user._id}).populate({
+      path: 'buyer',
+      select: '_id first_name last_name phone email' // Specify the fields you want to populate
+    })
+    .populate({
+      path: 'seller',
+      select: '_id first_name last_name phone email'
+    })
+    .populate({
+      path: 'listing',
+      // select: '_id first_name last_name phone email'
+    })
+    .exec();
+  } else if (req.user.role === "seller") {
+    appointments = await Appointment.find({seller: req.user._id}).populate({
+      path: 'buyer',
+      select: '_id first_name last_name phone email' // Specify the fields you want to populate
+    })
+    .populate({
+      path: 'seller',
+      select: '_id first_name last_name phone email'
+    })
+    .populate({
+      path: 'listing',
+      // select: '_id first_name last_name phone email'
+    })
+    .exec();
+  } else {
+    return res.status(403).json({message: "Current user role invalid"})
+  }
+  
+
+  return res.status(200).json({appointments: appointments})
+} 
+
+
 module.exports = {
   createAppointment,
   getAppointment,
-  updateAppointment
+  updateAppointment,
+  getUserAppointments
 }

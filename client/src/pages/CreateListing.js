@@ -25,8 +25,6 @@ const CreateListing = () => {
     status: "draft"
   });
 
-  console.log(token, role)
-
   const handleInput = (e) => {
     console.log(e.target.name)
     const newFormData = {...formData}
@@ -62,6 +60,7 @@ const CreateListing = () => {
     
     console.log(formData)
     console.log(token)
+    
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auto_listings`, formData, {
         "headers": {

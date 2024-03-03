@@ -26,6 +26,7 @@ const Header = () => {
       <div className="links_container">
         <Link to="/" className="link">Home</Link>
         <Link to="/auto_listings" className="link">Listings</Link>
+        <Link to="/sellers_appointments" className="link">Appointments Seller</Link>
         <Link to="/about" className="link">About</Link>
         {
           role === "seller" ? (<Link to="/create_listing" className="link">Create Listing</Link>) : <></>

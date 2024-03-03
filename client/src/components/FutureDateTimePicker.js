@@ -2,9 +2,8 @@ import { useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const FutureDateTimePicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-
+const FutureDateTimePicker = ({startDate, setStartDate, minDatePicker}) => {
+  
   // Function to handle selecting future dates
   const handleDateChange = date => {
     if (date > new Date()) {
@@ -28,9 +27,9 @@ const FutureDateTimePicker = () => {
       timeIntervals={60}
       timeFormat="HH:mm"
       dateFormat="MMMM d, yyyy h:mm aa"
-      minDate={new Date()}
-      minTime={roundToHour(new Date())}
-      maxTime={roundToHour(new Date(new Date().setHours(23)))}
+      minDate={minDatePicker}
+      minTime={roundToHour(new Date(new Date().setHours(0)))}
+      maxTime={roundToHour(new Date(new Date().setHours(19)))}
     />
   );
 };
