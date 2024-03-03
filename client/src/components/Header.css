@@ -1,6 +1,6 @@
 .header {
   background-color: black;
-  height: 5vh;
+  height: 6vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,8 +19,8 @@
 .links_container {
   display: flex;
   align-items: center;
-  justify-items: center;
-  width: 700px;
+justify-content: end;
+  width: 900px;
 }
 
 .link {

@@ -86,11 +86,12 @@ const SellerAppointments = () => {
                             return (
                                 <div className="appointment_card">
                                     <div className="card_section">
+                                        <p className="seller_info">Appointment Information:</p> 
                                         <p>Created on: {appointment.createdAt}</p>
                                         <p>ID: {appointment._id}</p>
                                         {role === "buyer" ? (
                                             <>
-                                                <h2>Seller information:</h2>
+                                                <p className="seller_info">Seller information:</p>
                                                 <p>
                                                     {
                                                         appointment.seller
@@ -116,8 +117,8 @@ const SellerAppointments = () => {
                                         )}
                                         {role === "seller" ? (
                                             <>
-                                                <h1>Buyer information:</h1>
-                                                <h1>
+                                                <p className="seller_info">Buyer information:</p>
+                                                <p>
                                                     {
                                                         appointment.buyer
                                                             .first_name
@@ -126,16 +127,13 @@ const SellerAppointments = () => {
                                                         appointment.buyer
                                                             .last_name
                                                     }
-                                                </h1>
-                                                <h1>
+                                                </p>
+                                                <p>
                                                     {appointment.buyer.phone}
-                                                </h1>
-                                                <h1>
+                                                </p>
+                                                <p>
                                                     {appointment.buyer.email}
-                                                </h1>
-                                                <h1>
-                                                    {appointment.buyer.phone}
-                                                </h1>
+                                                </p>
                                             </>
                                         ) : (
                                             <></>
@@ -143,11 +141,11 @@ const SellerAppointments = () => {
                                     </div>
 
                                     <div className="card_section">
-                                        <img src={chevroletImage} alt="chevrolet" width={400} height={300}/> {Image}
+                                        <img src={chevroletImage} alt="chevrolet" className='appt_img' width={400} height={300}/> {Image}
                                     </div>
 
                                     <div className="card_section">
-                                        <label>
+                                        <label className="seller_info">
                                             Current Appointment Status
                                         </label>
                                         {role === "seller" ? (
@@ -161,14 +159,14 @@ const SellerAppointments = () => {
                                                     <option value="canceled">Canceled</option>
                                                     <option value="closed">Closed</option>
                                                 </select>
-                                                <button onClick={() => updateAppointment(appointment._id)}>Change Status</button>
+                                                <button onClick={() => updateAppointment(appointment._id)} className="status_btn">Change Status</button>
                                             </>
                                         ) : (
                                             <></>
                                         )}
                                         {
                                           role === "buyer" ? (
-                                            <h1>{appointment.status}</h1>    
+                                            <p className="status_app">{appointment.status}</p>    
                                           ) : <></>
                                         }
                                     </div>
