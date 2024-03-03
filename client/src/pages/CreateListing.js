@@ -91,39 +91,40 @@ const CreateListing = () => {
         <img className="login_car_image" src="/images/login_car.jpeg" alt="bmw"></img>
           
           <div className="login_form_container">
-            <h3>Create a new listing</h3>
-            <label>Make</label>
-            <input name="make" onChange={handleInput} type="text"/>
+            <h3 className="create_listing_tit">Create a new listing</h3>
+            <label>Make (brand)</label>
+            <input name="make" onChange={handleInput} type="text" className="input_listing"/>
             
             <label>model</label>
-            <input name="model" onChange={handleInput} type="text"/>
+            <input name="model" onChange={handleInput} type="text" className="input_listing"/>
             
             <label>Year</label>
-            <input name="year" onChange={handleInput} type="number"/>
+            <input name="year" onChange={handleInput} type="number" className="input_listing"/>
           
             <label>City</label>
-            <input name="city" onChange={handleInput}  type="text"/>
+            <input name="city" onChange={handleInput}  type="text" className="input_listing"/>
             
             <label>State</label>
-            <input name="state" onChange={handleInput}  type="text"/>
+            <input name="state" onChange={handleInput}  type="text" className="input_listing"/>
 
             <label>Country</label>
-            <input name="country" onChange={handleInput}  type="text"/>
+            <input name="country" onChange={handleInput}  type="text" className="input_listing"/>
             
             <label>Price</label>
             <input 
               onChange={handleInput}
-              type="number" id="phone" name="price" 
+              type="number" id="phone" name="price" className="input_listing"
             />
 
             <label>Milage</label>
             <input 
               onChange={handleInput}
-              type="number" id="milage" name="milage" 
+              type="number" id="milage" name="milage"
+              className="input_listing"
             />
             
             <label>Status</label>
-            <select name="status" onChange={handleInput}>
+            <select name="status" onChange={handleInput} className="input_listing">
               <option value="draft">Draft</option>
               <option value="published">Published</option>
               <option value="closed">Closed</option>
@@ -136,6 +137,7 @@ const CreateListing = () => {
                 onClick={() => {
                   handleSubmit()
                 }}
+                className="input_list_button"
               >
                 Login
               </button>

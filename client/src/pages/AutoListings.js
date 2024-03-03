@@ -44,14 +44,14 @@ const AutoListings = () => {
       <Header/>
       <main className="main_container">
         <section className="hero_holder">
-          <h1>Auto Listings</h1>
+          <h1 className="auto_listings_tit">Auto Listings</h1>
           
           <section className="auto_listings_grid">
             {
               autoListings.map((listing) => {
                 console.log(listing);
                 return (
-                <Link to={`/auto_listing/${listing._id}`}>  
+                <Link to={`/auto_listing/${listing._id}`} className="listing_link">  
                   <div className="auto_listing_card">
                   <div style={{
 
@@ -60,17 +60,17 @@ const AutoListings = () => {
                   </div>
                       <div className="auto_listing_card_info_container">
                         <div style={{display: "flex"}}>
-                          <label>Make:</label>              
-                          <h2>{listing.make}</h2>
+                          <label className="car_info">Brand: </label>              
+                          <h2 className="car_info">{listing.make}</h2>
                         </div>
-                        <h2>{listing.model}</h2>
-                        <h2>{listing.year}</h2>
-                        <h2>{listing.model}</h2>
-                        <h2>{listing.city}</h2>
-                        <h2>{listing.state}</h2>
-                        <h2>{listing.country}</h2>
-                        <h2>{listing.owner.first_name}</h2>
-                        <h2>{listing.owner.email}</h2>
+                        <p className="car_info">{listing.model}</p>
+                        <p className="car_info">{listing.year}</p>
+                        <p className="car_info">{listing.model}</p>
+                        <p className="car_info">{listing.city}</p>
+                        <p className="car_info">{listing.state}</p>
+                        <p className="car_info">{listing.country}</p>
+                        <p className="car_info">{listing.owner.first_name}</p>
+                        <p className="car_info">{listing.owner.email}</p>
                       </div>
                   </div>
                 </Link>

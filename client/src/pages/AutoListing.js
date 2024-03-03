@@ -22,20 +22,20 @@ const AutoListing = () => {
     <> 
         <Header/>
         <main className="middle_section">
-          <h1>Auto Listing</h1>
+          <h1 className="auto_listing_tit">Auto Listing</h1>
           <div className="auto_listing_card">
             <div className="info_container">
-              <h1>{listing.make}</h1>
-              <h1>{listing.model}</h1>
-              <h1>{listing.year}</h1>
-              <h1>{listing.city}</h1>
-              <h1>{listing.state}</h1>
-              <h1>{listing.country}</h1>
-              <h1>{listing.createdAt}</h1>
-              <h1>{listing.owner.email}</h1>
-              <h1>{listing.owner_first_name}</h1>
+              <p className="car_listing_info">{listing.make}</p>
+              <p className="car_listing_info">{listing.model}</p>
+              <p className="car_listing_info">{listing.year}</p>
+              <p className="car_listing_info">{listing.city}</p>
+              <p className="car_listing_info">{listing.state}</p>
+              <p className="car_listing_info">{listing.country}</p>
+              <p className="car_listing_info">{listing.createdAt}</p>
+              <p className="car_listing_info">{listing.owner.email}</p>
+              <p className="car_listing_info">{listing.owner_first_name}</p>
               <Link to={`/appointment_scheduler/${id}`}>
-                <button>Make Appointment</button>
+                <button className="make_app_button">Make Appointment</button>
               </Link>
             </div>
             <div className="auto_listing_image">

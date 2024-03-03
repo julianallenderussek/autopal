@@ -1,20 +1,48 @@
 .auto_listing_card {
-  background-color: yellow;
-  width: 75vw;
+  width: 70vw;
+  margin: auto;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 2fr;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 
 .middle_section {
   padding: 20px;
   box-sizing: border-box;
-  background-color: blue;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .info_container {
-  background-color: green;
+  background-color: rgb(21, 157, 202);
+  width: 20rem;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+}
+
+.car_listing_info{
+  padding: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+  
+}
+
+.make_app_button {
+  text-decoration: none;
+  background-color: none;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  color: gray;
+}
+
+.auto_listing_image{
+  border-radius: 10px;
 }
