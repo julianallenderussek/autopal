@@ -9,9 +9,6 @@ import { Link, useNavigate } from 'react-router-dom';
 const MyAutoListings = () => {
 
   const [autoListings, setAutoListings] = useState([]); 
-  const [filters, setFilters] = useState({
-    status: "published"
-  });
   
   const  { setToken, token } = useContext(AppContext)
   

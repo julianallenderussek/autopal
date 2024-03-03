@@ -56,10 +56,10 @@ The backend project has a seed.js script for populating the database with mock d
 
 For populating the database make sure to first be able to run the backend project succesfully, created a database inside your local MongoDb instance and have setup your .env files inside the backend project
 
-After completing the steps mentioned above. Run `npm run test` 
+After completing the steps mentioned above. Run `npm run seed` 
 
 
-# Backend unit testing:
+# Backend unit and integration testing:
 The backend project has unit and integration test in place using the npm libraries Jest and Supertest. To run the unit test in the backend. `cd server` and then run the test script `npm run test` or `npm run testWatch` if you want to run the test in watch mode. 
   
   

@@ -11,6 +11,8 @@ const SellerAppointments = () => {
     const [appointments, setAppointments] = useState([]);
     const { setToken, token, role } = useContext(AppContext);
 
+    console.log("ROLE", token, role)
+
     const [appointmentStatuses, setAppointmentStatuses] = useState({});
     
     const fetchAppointments = async () => {
