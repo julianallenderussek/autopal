@@ -10,6 +10,7 @@ import CreateListing from './pages/CreateListing';
 import AutoListing from './pages/AutoListing';
 import AppointmentScheduler from './pages/AppointmentScheduler';
 import SellerAppointments from './pages/SellerAppointments';
+import MyAutoListings from './pages/MyAutoListings';
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path='signup' index element={<Signup/>}/>
         <Route path='create_listing' index element={<CreateListing/>}/>
         <Route path='auto_listings' index element={<AutoListings/>}/>
+        <Route path='my_auto_listings' index element={<MyAutoListings/>}/>
         <Route path='appointment_scheduler/:listing_id' index element={<AppointmentScheduler/>}/>
         <Route path='auto_listing/:id' index element={<AutoListing/>}/>
         <Route path='sellers_appointments' index element={<SellerAppointments/>}/>

@@ -9,9 +9,9 @@ const createAppointment = async (req, res) => {
     console.log("Create appointment", req.user , req.body)
 
     const appointment = new Appointment({...req.body, buyer: req.user._id});
-    await appointment.save();
+    const result = await appointment.save();
 
-    return res.status(201).json({message:"Appointment created", _id: appointment._id});
+    return res.status(201).json({message:"Appointment created", _id: result._id});
   } catch (err) {
     console.log(err.message)
     return res.status(400).json({ error: err.message });
@@ -75,8 +75,6 @@ const updateAppointment = async (req, res) => {
 };
 
 const getUserAppointments = async(req, res) => {
-
-  console.log(req.user)
 
   let appointments = []
   if (req.user.role === "buyer") {

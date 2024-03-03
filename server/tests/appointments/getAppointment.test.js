@@ -17,7 +17,6 @@ describe('GET /appointments/:_id', () => {
   
     appointment = await createAppointment(app);
   })
-
   
   afterAll(async () => {
     await mongoose.disconnect();
@@ -26,7 +25,7 @@ describe('GET /appointments/:_id', () => {
 
   it('Querying appointment by id - correct id', async () => {
     const response = await request(app)
-      .get(`/appointments/${appointment.appointment._id}`)
+      .get(`/appointments/id/${appointment.appointment._id}`)
       .set('Accept', 'application/json')
       .set('authorization', appointment.buyer.token);
     
