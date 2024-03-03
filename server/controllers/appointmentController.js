@@ -14,12 +14,9 @@ const createAppointment = async (req, res) => {
     return res.status(201).json({message:"Appointment created", _id: appointment._id});
   } catch (err) {
     console.log(err.message)
-    //
     return res.status(400).json({ error: err.message });
   }
 };
-
-
 
 const getAppointment = async (req, res) => {
   try {

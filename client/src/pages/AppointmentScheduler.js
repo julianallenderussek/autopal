@@ -42,7 +42,6 @@ const AppointmentScheduler = () => {
         })
         console.log(response)
         if (response.status === 201) {
-          console.log("SUCESS FULLL", response)
           setShowPopUp(true)
           setTimeout(() => {
             navigate('/')
@@ -91,18 +90,11 @@ const AppointmentScheduler = () => {
                   <p className='app_info'>{listing.owner.email}</p>
                   <p className='app_info'>{listing.owner_first_name}</p>
               </div>
-            
-            
-              <h2 className='pick_app'>Pick your appointment</h2>
-              <label className='app_time'>Appointment Time:</label>
-              <FutureDateTimePicker startDate={startDate} minDatePicker setStartDate={setStartDate}/>
-              
-              <button onClick={requestListing} className='app_button'>Request Appointment</button>
-          
-              {
-                showPopUp ? <h1>Popup</h1> : <></>
-              }
             </div>
+            <button onClick={requestListing}>Request Appointment</button>
+            {
+              showPopUp ? <h1>Popup</h1> : <></>
+            }
         </main>
     );
 };

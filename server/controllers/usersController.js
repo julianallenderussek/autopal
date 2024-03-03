@@ -31,7 +31,7 @@ const createUser = async (req, res) => {
 
     const token = await jwt.sign(tokenData,JWT_SECRET, { expiresIn: '2h'});  
     
-    return res.status(201).json({message:"Login successfully", token: token, role: user.role});
+    return res.status(201).json({message:"Signup successfully", token: token, role: user.role});
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
@@ -45,6 +45,8 @@ const loginUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
+
+    console.log(user.password, req.body.password)
 
     const passwordComparison = await bcrypt.compare(req.body.password,user.password)
     

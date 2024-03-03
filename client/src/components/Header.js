@@ -25,17 +25,31 @@ const Header = () => {
       </div>
       <div className="links_container">
         <Link to="/" className="link">Home</Link>
-        <Link to="/auto_listings" className="link">Listings</Link>
-        <Link to="/sellers_appointments" className="link">Appointments Seller</Link>
-        <Link to="/about" className="link">About</Link>
         {
-          role === "seller" ? (<Link to="/create_listing" className="link">Create Listing</Link>) : <></>
+          role === "seller" ? (
+              <>
+                <Link to="/create_listing" className="link">Create Listing</Link>
+                <Link to="/my_listings" className="link">My Listings</Link>
+                <Link to="/auto_listings" className="link">All Listings</Link>
+                <Link to="/sellers_appointments" className="link">Appointments</Link>
+              </>
+              ) : <></>
         }
+
+        {
+          role === "buyer" ? (
+              <>
+                <Link to="/auto_listings" className="link">All Listings</Link>
+                <Link to="/sellers_appointments" className="link">Appointments</Link>
+              </>
+              ) : <></>
+        }
+
         {
           token ? 
             <button onClick={disconnect}>Signout</button> :
             <Link to="/login" className="link">Login</Link>
-          }
+        }
         
       </div>
     </header>

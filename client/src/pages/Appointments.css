@@ -1,0 +1,35 @@
+
+.page_title {
+  margin: auto;
+  font-size: 35px;
+  text-align: center;
+  padding: 35px 0px;
+}
+.auto_listings_grid {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 50px 50px;
+}
+
+.appointment_card {
+  /* background-color: blue; */
+  border-radius: 10px;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card_section {
+  background-color: yellow;
+  outline: 1px red solid;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-around;
+}
