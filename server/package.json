@@ -7,6 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "npx jest",
+    "seed": "node seed.js",
     "testWatch": "jest --watchAll"
   },
   "keywords": [
