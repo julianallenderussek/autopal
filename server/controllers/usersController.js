@@ -26,7 +26,7 @@ const createUser = async (req, res) => {
     const tokenData = { 
       _id: user._id,
       email:user.email,
-      type: user.role
+      role: user.role
     }
 
     const token = await jwt.sign(tokenData,JWT_SECRET, { expiresIn: '2h'});  
@@ -53,12 +53,12 @@ const loginUser = async (req, res) => {
     if (!passwordComparison) {
       return res.status(400).json({ error: "Incorrect Password" });
     }
-
+   
     const tokenData = { 
       _id: user._id,
       email:user.email,
       role: user.role
-    }      
+    }
 
     const token = await jwt.sign(tokenData ,JWT_SECRET, { expiresIn: '2h'});  
 

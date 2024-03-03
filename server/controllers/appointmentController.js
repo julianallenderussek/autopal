@@ -51,7 +51,6 @@ const getAppointment = async (req, res) => {
 const updateAppointment = async (req, res) => {
   try {
 
-    console.log("HITITN GHTIS", req.params)
     if (!req.params._id) {
       return res.status(400).json({message:"Please provide a listing id"});    
     }
@@ -78,7 +77,7 @@ const getUserAppointments = async(req, res) => {
 
   let appointments = []
 
-  console.log(req.user)
+  console.log("CHEKC THIS", req.user)
 
   if (req.user.role === "buyer") {
     appointments = await Appointment.find({buyer: req.user._id}).populate({
@@ -109,7 +108,7 @@ const getUserAppointments = async(req, res) => {
     })
     .exec();
 
-    console.log("appointments", appointments)
+    console.log("SELLER , appointments", appointments)
 
   } else {
     return res.status(403).json({message: "Current user role invalid"})
