@@ -6,9 +6,7 @@ require('dotenv').config();
 const createAppointment = async (req, res) => {
   try {
 
-    console.log("Create appointment", req.user , req.body)
-
-    const appointment = new Appointment({...req.body, buyer: req.user._id});
+    const appointment = new Appointment({...req.body, buyer: req.user.id});
     const result = await appointment.save();
 
     return res.status(201).json({message:"Appointment created", _id: result._id});

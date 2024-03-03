@@ -17,8 +17,7 @@
 }
 
 .links_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
   align-items: center;
   justify-items: center;
   width: 700px;
@@ -27,6 +26,8 @@
 .link {
   text-decoration: none;
   color: white;
+  box-sizing: border-box;
+  padding: 0px 15px;
 } 
 
 .link:hover {
