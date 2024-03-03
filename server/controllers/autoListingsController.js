@@ -18,6 +18,23 @@ const createAutoListing = async (req, res) => {
   }
 };
 
+const myAutoListings = async (req, res) => {
+  try {
+    const autoListings = await AutoListing.find({
+      owner: req.user._id
+    }).populate({
+      path: 'owner',
+      select: 'first_name first_name email _id' // Specify the fields you want to populate
+  }).exec();
+    
+    return res.status(200).json({autoListings: autoListings});
+  } catch (err) {
+    console.log(err.message)
+    
+    return res.status(400).json({ error: err.message });
+  }
+};
+
 const getAutoListings = async (req, res) => {
   console.log(req.query)
   try {
@@ -96,5 +113,6 @@ module.exports = {
   getAutoListing,
   updateAutoListing,
   deleteAutoListing,
-  getAutoListings
+  getAutoListings,
+  myAutoListings
 }

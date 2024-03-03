@@ -76,6 +76,30 @@ const listings = [
     milage: getRandomInt(40000, 120000),
     status: "published",
     owner: ""
+  },
+  {
+    make: getRandom(makes),
+    model: getRandom(models),
+    year: getRandom(years),
+    city: "Victoria",
+    state: "British Columbia",
+    country: "Canada",
+    price: getRandomInt(20000, 40000),
+    milage: getRandomInt(40000, 120000),
+    status: "published",
+    owner: ""
+  },
+  {
+    make: getRandom(makes),
+    model: getRandom(models),
+    year: getRandom(years),
+    city: "Victoria",
+    state: "British Columbia",
+    country: "Canada",
+    price: getRandomInt(20000, 40000),
+    milage: getRandomInt(40000, 120000),
+    status: "published",
+    owner: ""
   }
 ]
 
@@ -103,15 +127,17 @@ async function run() {
 
   let autoListingOne = new AutoListing({...listings[0], owner: sellerOne._id});
   autoListingOne = await autoListingOne.save();
-
   let autoListingTwo = new AutoListing({...listings[1], owner: sellerOne._id});
   autoListingTwo = await autoListingTwo.save();
+  let autoListingThree = new AutoListing({...listings[2], owner: sellerTwo._id});
+  autoListingThree = await autoListingThree.save();
+  let autoListingFour = new AutoListing({...listings[3], owner: sellerTwo._id});
+  autoListingFour = await autoListingFour.save();
 
   const currentDate = new Date();
   const tomorrow = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
   const dayAfterTomorrow = new Date(currentDate.getTime() + (48 * 60 * 60 * 1000));
   
-
   let appointmentOne = new Appointment(
     { 
       buyer: buyerOne._id, 

@@ -6,12 +6,12 @@ require('dotenv').config();
 const createAppointment = async (req, res) => {
   try {
 
-    console.log("Create appointment", req.user , req.body)
+    console.log(req.user)
 
     const appointment = new Appointment({...req.body, buyer: req.user._id});
-    await appointment.save();
+    const result = await appointment.save();
 
-    return res.status(201).json({message:"Appointment created", _id: appointment._id});
+    return res.status(201).json({message:"Appointment created", _id: result._id});
   } catch (err) {
     console.log(err.message)
     return res.status(400).json({ error: err.message });
@@ -76,9 +76,10 @@ const updateAppointment = async (req, res) => {
 
 const getUserAppointments = async(req, res) => {
 
+  let appointments = []
+
   console.log(req.user)
 
-  let appointments = []
   if (req.user.role === "buyer") {
     appointments = await Appointment.find({buyer: req.user._id}).populate({
       path: 'buyer',
@@ -107,6 +108,9 @@ const getUserAppointments = async(req, res) => {
       // select: '_id first_name last_name phone email'
     })
     .exec();
+
+    console.log("appointments", appointments)
+
   } else {
     return res.status(403).json({message: "Current user role invalid"})
   }
