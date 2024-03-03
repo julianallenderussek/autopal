@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from 'react-router-dom';
 
-
 const Header = () => {
   
   const { token, setToken, role, setRole } = useContext(AppContext)

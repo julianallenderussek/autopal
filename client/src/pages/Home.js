@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Header from "../components/Header";
 import "./Home.css"
 import { AppContext } from "../context/AppContext";
+import Header from "../components/Header";
 
 const Home = () => {
 

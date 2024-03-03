@@ -7,6 +7,8 @@ import AppContextProvider from './context/AppContext';
 import Signup from './pages/Signup';
 import AutoListings from './pages/AutoListings';
 import CreateListing from './pages/CreateListing';
+import AutoListing from './pages/AutoListing';
+import AppointmentScheduler from './pages/AppointmentScheduler';
 
 function App() {
   
@@ -18,6 +20,8 @@ function App() {
         <Route path='signup' index element={<Signup/>}/>
         <Route path='create_listing' index element={<CreateListing/>}/>
         <Route path='auto_listings' index element={<AutoListings/>}/>
+        <Route path='appointment_scheduler/:listing_id' index element={<AppointmentScheduler/>}/>
+        <Route path='auto_listing/:id' index element={<AutoListing/>}/>
       </Route>
     )
   )

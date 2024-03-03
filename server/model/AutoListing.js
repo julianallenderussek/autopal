@@ -38,7 +38,10 @@ const AutoListingSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
-	main_image: String,
+	main_image: {
+    type: String,
+    default: "",
+  },
 	owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

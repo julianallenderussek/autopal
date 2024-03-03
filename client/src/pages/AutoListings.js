@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
-import "./AutoListing.css"
+import "./AutoListings.css"
 import { AppContext } from "../context/AppContext";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';

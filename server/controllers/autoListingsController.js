@@ -46,7 +46,7 @@ const getAutoListing = async (req, res) => {
       select: 'first_name first_name email _id' // Specify the fields you want to populate
   }).exec();
     
-    return res.status(201).json({autoListing});
+    return res.status(200).json({autoListing});
   } catch (err) {
     console.log(err.message)
     
