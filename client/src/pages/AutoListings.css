@@ -35,8 +35,8 @@
 }
 
 .auto_listing_image_holder {
-  background-image: url("./../../public/images/login_car.jpeg");
-  background-size: auto;
+  background-image: url("./../../public/images/chevrolet.jpeg");
+  background-size: cover;
   background-color: red;
   border-radius: 15px;
   

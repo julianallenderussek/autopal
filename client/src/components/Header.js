@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo_holder">
-        <h1>Logo</h1>
+        <h1 className="logo_tit">Autopal</h1>
       </div>
       <div className="links_container">
         <Link to="/" className="link">Home</Link>
@@ -47,7 +47,7 @@ const Header = () => {
 
         {
           token ? 
-            <button onClick={disconnect}>Signout</button> :
+            <button onClick={disconnect} className="sign_out">Sign out</button> :
             <Link to="/login" className="link">Login</Link>
         }
         

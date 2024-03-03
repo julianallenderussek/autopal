@@ -19,16 +19,16 @@
 }
 
 .info_container {
-  background-color: rgb(21, 157, 202);
-  width: 20rem;
-  padding: 10px;
+  width: 25rem;
+  padding: 10px 20px;
   border-radius: 15px;
   border: none;
+  color: black;
 }
 
 .car_listing_info{
   padding: 5px;
-  color: white;
+  color: black;
   font-size: 18px;
   font-weight: 100;
   

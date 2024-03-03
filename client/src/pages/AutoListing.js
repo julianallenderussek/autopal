@@ -38,7 +38,7 @@ const AutoListing = () => {
                 <button className="make_app_button">Make Appointment</button>
               </Link>
             </div>
-            <div className="auto_listing_image">
+            <div className="auto_listing_image_holder">
               <img/>
             </div>
           </div>

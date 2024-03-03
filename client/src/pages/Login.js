@@ -71,17 +71,18 @@ const Login = () => {
         <img className="login_car_image" src="/images/login_car.jpeg" alt="bmw"></img>
           
           <div className="login_form_container">
-            <h3>Sign in to the world's best auto marketplace</h3>
+            <h3 className="create_listing_tit">Sign in to the world's best auto marketplace</h3>
             <label>Email</label>
-            <input name="email" onChange={handleInput} type="text"/>
+            <input name="email" onChange={handleInput} type="text" className="input_listing"/>
             <label>Password</label>
-            <input onChange={handleInput} name="password" type="password"/>
+            <input onChange={handleInput} name="password" type="password" className="input_listing"/>
             <div className="button_container">
               <button 
                 disabled={isDisabled}
                 onClick={() => {
                   handleSubmit()
                 }}
+                className="input_list_button"
               >
                 Login
               </button>
@@ -89,9 +90,10 @@ const Login = () => {
             {
               errorMessage ? <p>{errorMessage}</p> : <></>
             }
-            <p>
-              You don't have an account <Link to={"/signup"}>Signup here</Link>
+            <p className="account_message">
+              You don't have an account 
             </p>
+            <Link to={"/signup"}>Sign up here!</Link>
           </div>
           
         
