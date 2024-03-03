@@ -33,19 +33,24 @@ const SellerAppointments = () => {
         }
     };
 
-    const updateAppointment = (id) => {
+    const updateAppointment = async (id) => {
       
       const dataToUpdate = {
         status: appointmentStatuses[id]
       }
 
       try {
-        const response = axios.put(`${process.env.REACT_APP_API_URL}/auto_listings/${id}`, dataToUpdate, {
+        const response = await axios.put(`${process.env.REACT_APP_API_URL}/appointments/${id}`, dataToUpdate, {
           headers: {
-              'authorization': token}`,
-              'Content-Type': 'application/json' // Adjust the content type according to your API requirements
-          });
-      })
+              'Authorization': token,
+              'Content-Type': 'application/json'
+          }
+        })
+
+        if (response.status === 201) {
+          fetchAppointments()
+        }
+        
       } catch (err) {
         console.log(err)
       }
