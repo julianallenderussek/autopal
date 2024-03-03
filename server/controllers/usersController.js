@@ -24,7 +24,7 @@ const createUser = async (req, res) => {
     await user.save();
     
     const tokenData = { 
-      id: user._id,
+      _id: user._id,
       email:user.email,
       type: user.role
     }

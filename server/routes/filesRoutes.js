@@ -28,7 +28,7 @@ router.post('/', authenticateToken, upload.single('file'), async function(req,re
     filename: req.file.filename,
     original_name: req.file.originalname,
     url: req.file.destination + req.file.filename, 
-    owner: req.user.id, 
+    owner: req.user._id, 
     file_type: req.body['file_type']
   })
 
