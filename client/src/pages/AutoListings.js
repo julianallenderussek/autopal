@@ -39,7 +39,6 @@ const AutoListings = () => {
    fetchAutoListings() 
   }, [])
 
-
   return (
     <>
       <Header/>
