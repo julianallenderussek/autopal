@@ -1,11 +1,12 @@
 .hero_image {
   width: 100vw;
   position: absolute;
+  height: 100vh;
 }
 
 .hero_card {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 10rem;
   background-color: white;
   transition-duration: 1s;
   transition-property: opacity;

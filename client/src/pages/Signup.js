@@ -84,30 +84,30 @@ const Signup = () => {
         <img className="login_car_image" src="/images/login_car.jpeg" alt="bmw"></img>
           
           <div className="login_form_container">
-            <h3>Create an account and join Autopal</h3>
+            <h3 className="create_listing_tit">Create an account and join Autopal</h3>
             <label>First Name</label>
-            <input name="first_name" onChange={handleInput} type="text"/>
+            <input name="first_name" onChange={handleInput} type="text" className="input_listing"/>
             
             <label>Last Name</label>
-            <input name="last_name" onChange={handleInput} type="text"/>
+            <input name="last_name" onChange={handleInput} type="text" className="input_listing"/>
             
             <label>Email</label>
-            <input name="email" onChange={handleInput} type="text"/>
+            <input name="email" onChange={handleInput} type="text" className="input_listing"/>
           
             <label>Password</label>
-            <input onChange={handleInput} name="password" type="password"/>
+            <input onChange={handleInput} name="password" type="password" className="input_listing"/>
             
             <label>Password Confirmation</label>
-            <input onChange={handleInput} name="password_confirmation" type="password"/>
+            <input onChange={handleInput} name="password_confirmation" type="password" className="input_listing"/>
             
             <label>Phone</label>
             <input 
               onChange={handleInput}
-              type="number" id="phone" name="phone" 
+              type="number" id="phone" name="phone" className="input_listing"
             />
 
             <label>Phone</label>
-            <select name="role" onChange={handleInput}>
+            <select name="role" onChange={handleInput} className="input_listing"> 
               <option value="seller">Seller</option>
               <option value="buyer">Buyer</option>
             </select>
@@ -119,14 +119,15 @@ const Signup = () => {
                 onClick={() => {
                   handleSubmit()
                 }}
+                className="input_list_button"
               >
-                Login
+                Sign up
               </button>
             </div>
             {
               errorMessage ? <p>{errorMessage}</p> : <></>
             }
-            <p>
+            <p className="account_message">
               You don't have an account <Link to={"/signup"}>Register here</Link>
             </p>
           </div>

@@ -3,16 +3,16 @@
     align-items: center;
     flex-direction: column;
     padding: 30px;
+    margin: 50px 10px;
 }
 
 .info_container {
-    background-color:  rgb(21, 157, 202);
     font-size: 18px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .app_info{
     padding: 3px;
-    color: whitesmoke;
+    color: black;
     font-weight: 100;
 }
 

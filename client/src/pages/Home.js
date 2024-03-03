@@ -10,10 +10,10 @@ const Home = () => {
       <Header/>
       <main className="main_container">
         <section className="hero_holder">
-          <img className="hero_image" src="/images/bmw.jpg" alt="bmw"></img>
+          <img className="hero_image" src="/images/car image.webp" alt="bmw"></img>
           <div className="hero_card">
             <h1>Welcome to Autopal</h1>
-            <h3></h3>
+            <h3>Drive Your Dreams: Find Your Perfect Ride Today</h3>
           </div>
         </section>
       </main>

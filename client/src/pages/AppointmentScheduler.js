@@ -90,8 +90,9 @@ const AppointmentScheduler = () => {
                   <p className='app_info'>{listing.owner.email}</p>
                   <p className='app_info'>{listing.owner_first_name}</p>
               </div>
+              <button onClick={requestListing} className="app_button">Request Appointment</button>
             </div>
-            <button onClick={requestListing}>Request Appointment</button>
+            
             {
               showPopUp ? <h1>Popup</h1> : <></>
             }

@@ -99,7 +99,7 @@ async function run() {
   let sellerOne = new User({...sellers[0], password: hashPassword});
   sellerOne = await sellerOne.save();
   let sellerTwo = new User({...sellers[1], password: hashPassword});
-  sellerOne = await sellerTwo.save();
+  sellerTwo = await sellerTwo.save();
 
   let autoListingOne = new AutoListing({...listings[0], owner: sellerOne._id});
   autoListingOne = await autoListingOne.save();
