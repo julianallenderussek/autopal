@@ -51,6 +51,7 @@ const getAppointment = async (req, res) => {
 const updateAppointment = async (req, res) => {
   try {
 
+    console.log("HITITN GHTIS", req.params)
     if (!req.params._id) {
       return res.status(400).json({message:"Please provide a listing id"});    
     }
