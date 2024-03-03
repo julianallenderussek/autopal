@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Header from "../components/Header";
+import './AppointmentScheduler.css';
 import useGetListing from "../hooks/useGetListing";
 import { AppContext } from "../context/AppContext";
 import { useParams, useNavigate } from "react-router-dom";
@@ -78,27 +79,30 @@ const AppointmentScheduler = () => {
     return (
         <main>
             <Header />
-            <div className="info_container">
-                <h1>{listing.make}</h1>
-                <h1>{listing.model}</h1>
-                <h1>{listing.year}</h1>
-                <h1>{listing.city}</h1>
-                <h1>{listing.state}</h1>
-                <h1>{listing.country}</h1>
-                <h1>{listing.createdAt}</h1>
-                <h1>{listing.owner.email}</h1>
-                <h1>{listing.owner_first_name}</h1>
-            </div>
-            <h3>Pick your appointment:</h3>
-            <label>Appointment Time:</label>
-            <FutureDateTimePicker startDate={startDate} minDatePicker setStartDate={setStartDate}/>
+            <div className='info_wrap'>
+              <div className="info_container">
+                  <p className='app_info'>{listing.make}</p>
+                  <p className='app_info' >{listing.model}</p>
+                  <p className='app_info'>{listing.year}</p>
+                  <p className='app_info'>{listing.city}</p>
+                  <p className='app_info'>{listing.state}</p>
+                  <p className='app_info'>{listing.country}</p>
+                  <p className='app_info'>{listing.createdAt}</p>
+                  <p className='app_info'>{listing.owner.email}</p>
+                  <p className='app_info'>{listing.owner_first_name}</p>
+              </div>
             
-            <button onClick={requestListing}>Request Appointment</button>
-        
-            {
-              showPopUp ? <h1>Popup</h1> : <></>
-            }
-        
+            
+              <h2 className='pick_app'>Pick your appointment</h2>
+              <label className='app_time'>Appointment Time:</label>
+              <FutureDateTimePicker startDate={startDate} minDatePicker setStartDate={setStartDate}/>
+              
+              <button onClick={requestListing} className='app_button'>Request Appointment</button>
+          
+              {
+                showPopUp ? <h1>Popup</h1> : <></>
+              }
+            </div>
         </main>
     );
 };

@@ -1,17 +1,14 @@
 .main_container {
-  background-color: #0014cc16;
   display: grid;
   grid-auto-flow: column;
 }
 
 .login_form_container {
-  justify-self: center;
+  justify-self: left;
   align-self: center;
   display: flex;
   flex-direction: column;
-  height: 400px;
   width: 450px;
-  background-color: yellow;
 }
 
 .login_car_image {
@@ -20,3 +17,24 @@
   height: 96vh;
 }
 
+label{
+  padding: 5px 0;
+}
+
+.create_listing_tit{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.input_listing{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  margin: 2px 0;
+}
+
+.input_list_button{
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
