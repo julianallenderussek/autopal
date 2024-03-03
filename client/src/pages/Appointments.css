@@ -21,15 +21,17 @@
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+
 .card_section {
-  background-color: yellow;
-  outline: 1px red solid;
+  border: 1px solid lightgray;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 10px;
   align-items: center;
   justify-content: space-around;
+
 }

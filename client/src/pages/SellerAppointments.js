@@ -4,6 +4,8 @@ import "./AutoListings.css";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import "./Appointments.css";
+import chevroletImage from "./chevrolet.jpeg"; // Import the image
+
 
 const SellerAppointments = () => {
     const [appointments, setAppointments] = useState([]);
@@ -84,12 +86,12 @@ const SellerAppointments = () => {
                             return (
                                 <div className="appointment_card">
                                     <div className="card_section">
-                                        <h1>{appointment.createdAt}</h1>
-                                        <h1>{appointment._id}</h1>
+                                        <p>Created on: {appointment.createdAt}</p>
+                                        <p>ID: {appointment._id}</p>
                                         {role === "buyer" ? (
                                             <>
-                                                <h1>Seller info</h1>
-                                                <h1>
+                                                <h2>Seller information:</h2>
+                                                <p>
                                                     {
                                                         appointment.seller
                                                             .first_name
@@ -98,23 +100,23 @@ const SellerAppointments = () => {
                                                         appointment.seller
                                                             .last_name
                                                     }
-                                                </h1>
-                                                <h1>
+                                                </p>
+                                                <p>
                                                     {appointment.seller.phone}
-                                                </h1>
-                                                <h1>
+                                                </p>
+                                                <p>
                                                     {appointment.seller.email}
-                                                </h1>
-                                                <h1>
+                                                </p>
+                                                <p>
                                                     {appointment.seller.phone}
-                                                </h1>
+                                                </p>
                                             </>
                                         ) : (
                                             <></>
                                         )}
                                         {role === "seller" ? (
                                             <>
-                                                <h1>Buyer info</h1>
+                                                <h1>Buyer information:</h1>
                                                 <h1>
                                                     {
                                                         appointment.buyer
@@ -140,7 +142,9 @@ const SellerAppointments = () => {
                                         )}
                                     </div>
 
-                                    <div className="card_section"></div>
+                                    <div className="card_section">
+                                        <img src={chevroletImage} alt="chevrolet" width={400} height={300}/> {Image}
+                                    </div>
 
                                     <div className="card_section">
                                         <label>
