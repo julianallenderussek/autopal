@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const createAutoListing = async (req, res) => {
   try {
+    console.log({body: req.body, user: req.user})
+
     const autoListing = new AutoListing({...req.body, owner: req.user._id});
     await autoListing.save();
   

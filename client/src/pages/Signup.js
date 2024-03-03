@@ -11,7 +11,7 @@ const Signup = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const { token, setToken, user, setUser } = useContext(AppContext) 
+  const  { setToken, setRole } = useContext(AppContext)
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -60,6 +60,10 @@ const Signup = () => {
       console.log(response)
       if (response.status === 201) {
         setToken(response.data.token)
+        setRole(response.data.role)
+        
+        localStorage.setItem('token',response.data.token)
+        localStorage.setItem('role',response.data.role)
         navigate("/")
       }
     } catch(error) {

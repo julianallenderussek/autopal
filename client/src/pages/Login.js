@@ -43,12 +43,15 @@ const Login = () => {
     console.log(`${process.env.REACT_APP_API_URL}`)
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, formData)
+      console.log("Congratulations", response.data)
+        
       if (response.status === 200) {
         console.log("Congratulations", response.data)
-        setToken(response.data.token)
-        setRole(response.data.role)
+        
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('role', response.data.role)
+        setToken(response.data.token)
+        setRole(response.data.role)
         navigate("/auto_listings")
       }
     } catch(error) {

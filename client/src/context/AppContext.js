@@ -26,6 +26,7 @@ const AppContextProvider = ({children}) => {
 
   const [role, setRole] = useState(() => {
     const role = localStorage.getItem('role');
+    console.log("get Role", role)
     if (!role) {
       return null
     } else {

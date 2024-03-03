@@ -41,7 +41,6 @@ const AppointmentScheduler = () => {
         })
         console.log(response)
         if (response.status === 201) {
-          console.log("SUCESS FULLL", response)
           setShowPopUp(true)
           setTimeout(() => {
             navigate('/')
@@ -94,11 +93,9 @@ const AppointmentScheduler = () => {
             <FutureDateTimePicker startDate={startDate} minDatePicker setStartDate={setStartDate}/>
             
             <button onClick={requestListing}>Request Appointment</button>
-        
             {
               showPopUp ? <h1>Popup</h1> : <></>
             }
-        
         </main>
     );
 };
